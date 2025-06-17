@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Happy 19</title>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;700&family=Pacifico&family=Quicksand:wght@400;700&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+  <style>
+    * {
+      margin: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(to top right, #ff9a9e, #fad0c4);
+      color: white;
+      overflow-x: hidden;
+    }
+    .container {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 2rem;
+      position: relative;
+    }
+    h1 {
+      font-family: 'Great Vibes', cursive;
+      font-size: 4rem;
+      margin-bottom: 1rem;
+      opacity: 0;
+    }
+    p {
+      font-size: 1.5rem;
+      max-width: 700px;
+      opacity: 0;
+    }
+    .heart {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background-color: #ff69b4;
+      transform: rotate(45deg);
+      animation: floatUp 5s infinite ease-in;
+    }
+    .heart::before,
+    .heart::after {
+      content: "";
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background-color: #ff69b4;
+      border-radius: 50%;
+    }
+    .heart::before {
+      top: -10px;
+      left: 0;
+    }
+    .heart::after {
+      left: -10px;
+      top: 0;
+    }
+    @keyframes floatUp {
+      0% { bottom: 0; opacity: 0; transform: scale(0.5) rotate(45deg); }
+      50% { opacity: 1; }
+      100% { bottom: 100%; opacity: 0; transform: scale(1.2) rotate(45deg); }
+    }
+    button {
+      margin-top: 2rem;
+      padding: 1rem 2rem;
+      font-size: 1.2rem;
+      background-color: white;
+      border: none;
+      border-radius: 50px;
+      color: #ff5e78;
+      cursor: pointer;
+      font-weight: bold;
+      box-shadow: 0 0 15px rgba(255, 255, 255, 0.4);
+      transition: transform 0.3s ease;
+    }
+    button:hover {
+      transform: scale(1.1);
+    }
+
+    /* Surprise Section */
+    #surprise {
+      display: none;
+      background: #3498db;
+      color: #ffe3ec;
+      padding: 4rem 2rem;
+      text-align: center;
+      animation: fadeIn 2s ease-in;
+    }
+    #surprise h2 {
+      font-family: 'Pacifico', cursive;
+      font-size: 3rem;
+      color: #283747;
+    }
+    #surprise p {
+      font-size: 1.2rem;
+      max-width: 800px;
+      margin: 1rem auto;
+      color: #fbd3dc;
+    }
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
+      padding: 1rem;
+    }
+    .gallery img {
+      width: 100%;
+      border-radius: 20px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+      transition: transform 0.3s, opacity 0.3s;
+      cursor: pointer;
+    }
+    .gallery img:hover {
+      transform: scale(1.05);
+    }
+    .back-btn {
+      margin-top: 2rem;
+      background: #fff;
+      color: #800020;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Heart Burst Effect */
+    .heart-particle {
+      position: absolute;
+      width: 15px;
+      height: 15px;
+      background: #ff4d6d;
+      transform: rotate(45deg);
+      opacity: 0.9;
+      animation: floatAndFade 0.8s ease-out forwards;
+      z-index: 9999;
+    }
+    .heart-particle::before,
+    .heart-particle::after {
+      content: "";
+      position: absolute;
+      width: 15px;
+      height: 15px;
+      background: #ff4d6d;
+      border-radius: 50%;
+    }
+    .heart-particle::before {
+      top: -7.5px;
+      left: 0;
+    }
+    .heart-particle::after {
+      top: 0;
+      left: -7.5px;
+    }
+
+    @keyframes floatAndFade {
+      to {
+        transform: translate(var(--x), var(--y)) scale(0.5) rotate(45deg);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Main Birthday Section -->
+  <div class="container" id="main">
+    <h1 id="title">Happiee poranthaa naaal dii, dabbi mavaleyyy 🎉</h1>
+    <p id="message">19 looks perfect on you 💖<br>Dubukki iniku la irundhu 19 ah change aagura..happy ahh iru..may god bless you with PROSPERITY,LOVE,LAUGHTER and LIFE FULL OF HAPPINESS ma thangoo..enjoyy ur day to the fullest chelamaee...epoyum sirichitu, sandhosama iruu da en bujjukutty..</p>
+
+    <button onclick="showSurprise()">Turns 19 🎂</button><br><br>
+    <b>
+      <a href="https://www.youtube.com/watch?v=kPhpHvnnn0Q&list=RDkPhpHvnnn0Q&start_radio=1">THOTTU PAARU</a><br><br>
+      <a href="https://www.sciencephoto.com/media/385106/view/grinning-chimpanzee">CLICK TO SEE YOUR PHOTO</a>
+    </b>
+  </div>
+
+  <!-- Surprise Section -->
+  <div id="surprise">
+    <h2>🎈 Surprise Time! 🎈</h2>
+    <p>From childhood giggles to grown-up dreams, every second with you is a treasure. <br>
+       On your 19th, here's a little piece of my heart wrapped in pictures and words. 💝</p>
+    <p style="font-style: italic; font-size: 1.1rem;">
+      You light up every space you walk into,<br>
+      With laughter that's warm and smiles so true.<br>
+      On your day, I wish you all you deserve,<br>
+      A life of joy, love, and endless verve. 🌟
+    </p>
+
+    <div class="gallery">
+      <img src="0.5.jpg" alt="Moment 1">
+      <img src="2.0.jpg" alt="Moment 2">
+      <img src="proj.jpg" alt="Moment 3">
+    </div>
+
+    <p style="margin-top: 2rem;">
+      These snapshots are just a glimpse, but they hold oceans of love. <br>
+      Keep smiling, keep shining, and remember—you're cherished more than words can say. 💖<br>
+      Happy 19th again, my forever favorite person! 🎂
+    </p>
+
+    <button class="back-btn" onclick="goBack()">Go Back 🔙</button>
+  </div>
+
+  <!-- Audio for Main -->
+  <audio id="audio1" autoplay loop>
+    <source src="https://www.bensound.com/bensound-music/bensound-romantic.mp3" type="audio/mpeg">
+  </audio>
+
+  <!-- Audio for Surprise -->
+  <audio id="audio2" loop>
+    <source src="https://www.bensound.com/bensound-music/bensound-love.mp3" type="audio/mpeg">
+  </audio>
+
+  <!-- Script -->
+  <script>
+    function createHeart() {
+      const heart = document.createElement("div");
+      heart.className = "heart";
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.animationDuration = (Math.random() * 3 + 2) + "s";
+      document.body.appendChild(heart);
+      setTimeout(() => {
+        heart.remove();
+      }, 5000);
+    }
+    setInterval(createHeart, 300);
+
+    gsap.fromTo("#title", {y: -50, opacity: 0}, {y: 0, opacity: 1, duration: 2});
+    gsap.fromTo("#message", {y: 50, opacity: 0}, {y: 0, opacity: 1, duration: 2, delay: 1});
+
+    function showSurprise() {
+      document.getElementById("main").style.display = "none";
+      document.getElementById("surprise").style.display = "block";
+      document.body.style.background = "#800020";
+      document.getElementById("audio1").pause();
+      document.getElementById("audio2").play();
+      fireConfetti();
+    }
+
+    function goBack() {
+      document.getElementById("surprise").style.display = "none";
+      document.getElementById("main").style.display = "flex";
+      document.body.style.background = "linear-gradient(to top right, #ff9a9e, #fad0c4)";
+      document.getElementById("audio2").pause();
+      document.getElementById("audio1").play();
+    }
+
+    function fireConfetti() {
+      confetti({
+        particleCount: 200,
+        spread: 100,
+        origin: { y: 0.6 },
+      });
+    }
+
+    function heartBlast(x, y) {
+      for (let i = 0; i < 15; i++) {
+        const heart = document.createElement("div");
+        heart.className = "heart-particle";
+
+        const angle = Math.random() * 2 * Math.PI;
+        const distance = Math.random() * 80 + 30;
+        const offsetX = Math.cos(angle) * distance + "px";
+        const offsetY = Math.sin(angle) * distance + "px";
+
+        heart.style.left = x + "px";
+        heart.style.top = y + "px";
+        heart.style.setProperty("--x", offsetX);
+        heart.style.setProperty("--y", offsetY);
+
+        document.body.appendChild(heart);
+
+        setTimeout(() => {
+          heart.remove();
+        }, 800);
+      }
+    }
+
+    window.addEventListener("DOMContentLoaded", () => {
+      document.querySelectorAll(".gallery img").forEach(img => {
+        img.addEventListener("click", e => {
+          const rect = img.getBoundingClientRect();
+          const x = rect.left + rect.width / 2;
+          const y = rect.top + rect.height / 2 + window.scrollY;
+
+          img.style.opacity = 0;
+          heartBlast(x, y);
+
+          setTimeout(() => {
+            img.style.opacity = 1;
+          }, 900);
+        });
+      });
+    });
+  </script>
+
+</body>
+</html>
